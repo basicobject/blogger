@@ -4,9 +4,8 @@
 
 <div id="posts">
   <% @posts.each do |post| %>
-    <%= render post %>
     <p>
-      <%= link_to "Show this post", post %>
+      <%= link_to post.title, post %> | Likes: <%= post.like_count %> | Dislikes: <%= post.dislike_count %> | <%= post.is_published ? "Published" : "Unpublished" %>
     </p>
   <% end %>
 </div>

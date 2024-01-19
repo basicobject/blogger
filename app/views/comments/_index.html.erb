@@ -1,0 +1,12 @@
+<div class="comments">
+  <% comments.each do |comment| %>
+    <p>
+      <div><%= comment.content %> </div>
+      <div>Likes: <%= comment.like_count %> | Dislikes: <%= comment.dislike_count %></div>
+      <div>
+        <%= button_to "Like", like_post_comment_path(post, comment), method: :put %> | <%= button_to "Dislike", dislike_post_comment_path(post, comment), method: :put %>
+        <%= button_to "Delete", [post, comment], method: :delete %>
+      </div>
+    </p>
+  <% end %>
+</div>

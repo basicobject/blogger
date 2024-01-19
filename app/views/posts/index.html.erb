@@ -6,6 +6,7 @@
   <% @posts.each do |post| %>
     <p>
       <%= link_to post.title, post %> | Likes: <%= post.like_count %> | Dislikes: <%= post.dislike_count %> | <%= post.is_published ? "Published" : "Unpublished" %>
+      <small>(<%= post.comments_count %>)</small>
     </p>
   <% end %>
 </div>

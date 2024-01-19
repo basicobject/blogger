@@ -10,3 +10,8 @@
 
   <%= button_to "Destroy this post", @post, method: :delete %>
 </div>
+
+<h2>Comments (<%= @post.comments_count %>)</h2>
+
+<%= render "comments/new", post: @post, comment: @comment %>
+<%= render "comments/index", post: @post, comments: @comments %>

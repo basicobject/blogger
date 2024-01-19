@@ -4,6 +4,13 @@ Rails.application.routes.draw do
       put 'like', to: "posts#like_or_dislike"
       put 'dislike', to: "posts#like_or_dislike"
     end
+
+    resources :comments do
+      member do
+        put 'like', to: "comments#like_or_dislike"
+        put 'dislike', to: "comments#like_or_dislike"
+      end
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

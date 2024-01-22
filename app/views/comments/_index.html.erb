@@ -5,6 +5,7 @@
       <div>Likes: <%= comment.like_count %> | Dislikes: <%= comment.dislike_count %></div>
       <div>
         <%= button_to "Like", like_post_comment_path(post, comment), method: :put %> | <%= button_to "Dislike", dislike_post_comment_path(post, comment), method: :put %>
+        <%= link_to "Edit", edit_post_comment_path(post, comment) %>
         <%= button_to "Delete", [post, comment], method: :delete %>
       </div>
     </p>

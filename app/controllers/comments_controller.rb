@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-    before_action :set_post, only: %i[create update destroy like_or_dislike ]
-    before_action :set_comment, only: %i[like_or_dislike destroy]
+    before_action :set_post, only: %i[create edit update destroy like_or_dislike ]
+    before_action :set_comment, only: %i[edit update like_or_dislike destroy]
     # POST /posts or /posts.json
     def create
       @comment = @post.comments.new(comment_params)
@@ -16,15 +16,17 @@ class CommentsController < ApplicationController
       end
     end
 
+    def edit
+    end
     # PATCH/PUT /posts/1 or /posts/1.json
     def update
       respond_to do |format|
-        if @post.update(post_params)
+        if @comment.update(comment_params)
           format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
           format.json { render :show, status: :ok, location: @post }
         else
           format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
       end
     end

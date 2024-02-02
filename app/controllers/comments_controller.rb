@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, except: %i[show like_or_dislike]
     before_action :set_post, only: %i[create edit update destroy like_or_dislike ]
     before_action :set_comment, only: %i[edit update like_or_dislike destroy]
     # POST /posts or /posts.json

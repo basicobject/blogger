@@ -1,14 +1,20 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <p>
-      <%= link_to post.title, post %> | Likes: <%= post.like_count %> | Dislikes: <%= post.dislike_count %> | <%= post.is_published ? "Published" : "Unpublished" %>
-      <small>(<%= post.comments_count %>)</small>
-    </p>
-  <% end %>
+<div class="container p-4 bg-opacity-50 bg-space">
+  <div class="m-2">
+      <% @posts.each do |post| %>
+        <div class="px-4 py-2 m-2 bg-white rounded">
+          <div class="flex font-thin place-content-end text-secondary"><%= post.created_at.to_fs(:stamp) %></div>
+          <div class=""><%= link_to post.title, post, class: "text-xl text-primary opacity-80 hover:opacity-100 hover:underline hover:underline-offset-8" %></div>
+          <div class="gap-2 text-secondary">
+            <span><small>Likes: <%= post.like_count %></small></span>
+            <span><small>Dislikes: <%= post.dislike_count %></small></span>
+            <span><small>Comments: <%= post.comments_count %></small></span>
+          </div>
+          <% if user_signed_in? %>
+            <div class="flex place-content-end text-secondary">
+              <span><small><%= post.is_published ? "Published" : "Unpublished" %></small></span>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
 </div>
-
-<%= link_to "New post", new_post_path %>

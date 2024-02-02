@@ -1,0 +1,15 @@
+<header>
+    <nav class="container p-4 bg-primary">
+        <div class="flex flex-wrap items-center justify-between">
+            <div>
+                <%= link_to "BasicObject", root_path, class: "text-secondary opacity-80 hover:opacity-100 font-bold" %>
+            </div>
+            <div class="flex gap-4">
+                <% if user_signed_in? %>
+                    <%= link_to "New Post", new_post_path, class: "text-secondary opacity-80 hover:opacity-100 hover:underline hover:underline-offset-8" %>
+                    <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-secondary opacity-80 hover:opacity-100 hover:underline hover:underline-offset-8" %>
+                <% end %>
+            </div>
+        </div>
+    </nav>
+</header>

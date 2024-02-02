@@ -1,18 +1,9 @@
-<div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
+<div class="p-8 bg-white rounded">
+  <div class="text-center">
+    <span class="text-3xl text-primary"><%= post.title %></span>
+  </div>
 
-  <p>
-    <strong>Content:</strong>
-
+  <div>
     <%= post.content %>
-  </p>
-
-  <p>
-    <strong>Is published:</strong>
-    <%= post.is_published %>
-  </p>
-
+  </div>
 </div>

@@ -1,16 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<div class="container p-4 bg-opacity-50 bg-space">
 
-<%= render @post %>
+  <div class="m-2">
+    <div class="flex justify-between my-2">
+      <%= render "shared/ui/link_button", text: "Back", url: posts_path %>
+      <div class="flex gap-4 place-content-end">
+        <%= render "shared/ui/link_button", text: "Edit", url: edit_post_path(@post) %>
+        <%= render "shared/ui/danger_button", text: "Delete", url: post_path(@post) %>
+      </div>
+    </div>
+    <%= render @post %>
+  </div>
 
-<div>
-  <%= button_to "Like", like_post_path(@post), method: :put %>
-  <%= button_to "Dislike", dislike_post_path(@post), method: :put %>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
-
-  <%= button_to "Destroy this post", @post, method: :delete %>
+  <div class="p-2 m-2 bg-white">
+    <div class="flex gap-4">
+      <%= render "shared/ui/default_button", text: "Like", url: like_post_path(@post) %>
+      <span class="self-end text-sm"><%= @post.like_count%></span>
+      <%= render "shared/ui/default_button", text: "Dislike", url: dislike_post_path(@post) %>
+      <span class="self-end text-sm"><%= @post.dislike_count%></span>
+    </div>
+  </div>
 </div>
-
 
 <%= render "comments/new", post: @post, comment: @comment %>
 <h2>Comments (<%= @post.comments_count %>)</h2>

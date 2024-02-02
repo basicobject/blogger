@@ -9,9 +9,11 @@ module.exports = {
   ],
   theme: {
     colors: {
-      primary: "#e7b460", // cadmium yellow
-      secondary: "#54422d", // coffee brown
-      night: "#0a0c0e", // night black
+      primary: "#e9c46a", // cadmium yellow
+      secondary: "#54422d",
+      success: "#2a9d8f",
+      danger: "#e76f51",
+      night: "#264653", // night black
       space: "#404344", // space gray
       white: "#ffffff"
     },

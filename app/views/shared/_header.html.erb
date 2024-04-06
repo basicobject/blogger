@@ -1,13 +1,21 @@
-<header>
-    <nav class="container p-4 bg-primary">
-        <div class="flex flex-wrap items-center justify-between">
-            <div>
-                <%= link_to "Deepak Kumar", root_path, class: "text-secondary opacity-80 hover:opacity-100 font-bold" %>
+<header class="w-[720px] mx-auto my-10">
+    <nav>
+        <div class="flex flex-wrap justify-between">
+            <div class="lhs">
+                <%= link_to root_path, class: "text-gray-850 font-light pointer" do %>
+                  <%= image_tag "icons/Logo.png", class: "w-4 h-6" %>
+                <% end %>
             </div>
-            <div class="flex gap-4">
+            <div class="rhs flex gap-8">
                 <% if user_signed_in? %>
-                    <%= link_to "New Post", new_post_path, class: "text-secondary opacity-80 hover:opacity-100 hover:underline hover:underline-offset-8" %>
-                    <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-secondary opacity-80 hover:opacity-100 hover:underline hover:underline-offset-8" %>
+                    <%= link_to "New Post", new_post_path, class: "text-base-850 font-thin pointer" %>
+                    <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-base-850 font-thin pointer" %>
+                <% else %>
+                    <%= link_to "Posts", posts_path, class: "text-gray-850 font-thin pointer" %>
+                    <%= link_to "About", "#", class: "text-gray-850 font-thin pointer" %>
+                    <%= link_to "#", class: "text-gray-850 font-thin pointer" do %>
+                      <%= image_tag "icons/Toggle.png", class: "w-6 h-6" %>
+                    <% end %>
                 <% end %>
             </div>
         </div>

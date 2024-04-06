@@ -4,8 +4,12 @@
     <div class="flex justify-between my-2">
       <%= render "shared/ui/link_button", text: "Back", url: posts_path %>
       <div class="flex gap-4 place-content-end">
-        <%= render "shared/ui/link_button", text: "Edit", url: edit_post_path(@post) %>
-        <%= render "shared/ui/danger_button", text: "Delete", url: post_path(@post) %>
+        <% if policy(@post).edit? %>
+          <%= render "shared/ui/link_button", text: "Edit", url: edit_post_path(@post) %>
+        <% end %>
+        <% if policy(@post).delete? %>
+          <%= render "shared/ui/danger_button", text: "Delete", url: post_path(@post) %>
+        <% end %>
       </div>
     </div>
     <%= render @post %>
@@ -21,6 +25,9 @@
   </div>
 </div>
 
-<%= render "comments/new", post: @post, comment: @comment %>
+<%   policy(@comment).new? do %>
+  <%= render "comments/new", post: @post, comment: @comment %>
+<% end %>
+
 <h2>Comments (<%= @post.comments_count %>)</h2>
 <%= render "comments/index", post: @post, comments: @comments %>

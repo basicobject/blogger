@@ -1,20 +1,27 @@
-<div class="container p-4 bg-opacity-50 bg-space">
-  <div class="m-2">
-      <% @posts.each do |post| %>
-        <div class="px-4 py-2 m-2 bg-white rounded">
-          <div class="flex font-thin place-content-end text-secondary"><%= post.created_at.to_fs(:stamp) %></div>
-          <div class=""><%= link_to post.title, post, class: "text-xl text-primary opacity-80 hover:opacity-100 hover:underline hover:underline-offset-8" %></div>
-          <div class="gap-2 text-secondary">
-            <span><small>Likes: <%= post.like_count %></small></span>
-            <span><small>Dislikes: <%= post.dislike_count %></small></span>
-            <span><small>Comments: <%= post.comments_count %></small></span>
-          </div>
-          <% if user_signed_in? %>
-            <div class="flex place-content-end text-secondary">
-              <span><small><%= post.is_published ? "Published" : "Unpublished" %></small></span>
+<div class="w-[720px] mx-auto flex border rounded items-center drop-shadow">
+  <label for="posts-search">
+    <%= image_tag "icons/Search.png", class: "w-6 h-6 ml-2" %>
+  </label>
+  <input id="posts-search" type="text" class="flex-1 px-2 py-2 rounded font-light text-base text-gray-500 border-none border-transparent focus:border-transparent focus:ring-0" style="background: transparent;" placeholder="Search posts ..." />
+</div>
+
+<div class="w-[720px] mx-auto">
+  <div class="my-10">
+      <% @posts_by_year.each do |year, posts| %>
+          <div class="font-light text-2xl text-gray-700 mb-5">Year <%= year %></div>
+          <% posts.each do |post| %>
+            <div class="border-b py-2">
+              <div class="flex font-light text-base text-gray-700 place-content-end"><%= post.created_at.to_fs(:stamp) %></div>
+              <div class="font-light text-lg text-gray-850">
+                <%= link_to post.title, post, class: "pointer" %>
+              </div>
+              <% if user_signed_in? %>
+                <div class="font-light text-base text-gray-700 ">
+                  <span><small><%= post.is_published ? "Published" : "Unpublished" %></small></span>
+                </div>
+              <% end %>
             </div>
           <% end %>
-        </div>
       <% end %>
   </div>
 </div>
